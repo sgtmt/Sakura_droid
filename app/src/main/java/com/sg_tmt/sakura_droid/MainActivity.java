@@ -3,6 +3,7 @@ package com.sg_tmt.sakura_droid;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -22,9 +23,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void playBtn(View view){
 
+
         choice();
+        Log.d("MyApp", "n=" +n );
         new MaterialDialog.Builder(this).title("占い結果").content("占い結果は\n" +choice_data
                 ).positiveText("はい").negativeText("いいえ").show();
+        choiceReset();
 
     }
     public void infoBtn(View view){
@@ -33,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             "横の▶のボタンを押してね").positiveText("はい").negativeText("いいえ").show();
     }
     public void choice(){
-        n=(int)Math.random()*7+1;
+        n=(int)(Math.random()*7)+1;
         switch (n){
             case 1:
                 choice_data="大吉";
@@ -56,7 +60,13 @@ public class MainActivity extends AppCompatActivity {
             case 7:
                 choice_data="大凶";
                 break;
-
+            default:
+                break;
         }
+
+
+    }
+    public void choiceReset() {
+        choice_data="";
     }
 }
